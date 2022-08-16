@@ -1,0 +1,33 @@
+<form [formGroup]="forma" (ngSubmit)="validar()">
+    <div class="col-4 mx-auto form-group" >
+        <div class="mb-3 row">
+            <label for="user" class="form-label">Usuario</label>
+            <input type="text" class="form-control" formControlName="user" 
+            [class.is-invalid]="userInvalid">
+
+        </div>
+        <div class="mb-3 row">
+            <label for="password" class="form-label">Clave</label>
+            <input type="password" class="form-control"  formControlName="passwd"
+            [class.is-invalid]="passInvalid">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Login</button>
+    </div>
+</form>
+
+
+<hr>
+
+<pre>
+
+    Estado del Formulario: {{forma.valid}}
+    Status: {{forma.status}}
+
+</pre>
+
+<pre>
+    Valores 
+{{forma.value | json}}
+</pre>
+
