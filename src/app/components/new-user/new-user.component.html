@@ -1,0 +1,48 @@
+<div class="card border-info mb-3" style="max-width: 80rem;">
+
+    <div class="card-header">
+        <p class="fs-3">Bienvenido, registrate y en breve tendras tu equipo</p>
+    </div>
+
+    <div class="card-body">
+        <form class="row g-3" [formGroup]="forma" (ngSubmit)="validar()">
+            <div class="col-md-6">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" formControlName="nombre" >
+            </div>
+            <div class="col-md-6">
+                <label for="apellido" class="form-label">Apellido</label>
+                <input type="text" class="form-control" formControlName="apellido">
+            </div>
+            <div class="col-md-6">
+                <label for="correo" class="form-label">e-mail</label>
+                <input type="text" class="form-control" formControlName="correo">
+            </div>
+            <div class="col-md-6">
+                <label for="correo2" class="form-label">Confirmación e-mail</label>
+                <input type="text" class="form-control" formControlName="correo2">
+            </div>
+            <div class="col-md-6">
+                <label for="passwd" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" formControlName="passwd">
+            </div>
+            <div class="col-md-6">
+                <label for="passwd2" class="form-label">Confirmación Contraseña</label>
+                <input type="password" class="form-control" formControlName="passwd2">
+            </div>
+
+            <div class="col-md-6">
+                <label for="pais" class="form-label">Pais</label>
+                <select formControlName="pais" class="form-select">
+                    <option selected></option>
+                    <option *ngFor="let countrie of countries" value="{{countrie.code}}">{{countrie.name_es}}</option>
+                    
+                </select>
+            </div>
+
+            <div class="d-grid my-5">
+                <button type="submit" class="btn btn-primary">Sign in</button>
+            </div>
+        </form>
+    </div>
+</div>
