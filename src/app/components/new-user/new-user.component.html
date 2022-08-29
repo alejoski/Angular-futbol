@@ -8,41 +8,59 @@
         <form class="row g-3" [formGroup]="forma" (ngSubmit)="validar()">
             <div class="col-md-6">
                 <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" class="form-control" formControlName="nombre" >
+                <input type="text" class="form-control" formControlName="nombre" [class.is-invalid]="nombreInvalido">
+                <small *ngIf="nombreInvalido" class="text-danger">Campo requerido</small>
             </div>
             <div class="col-md-6">
                 <label for="apellido" class="form-label">Apellido</label>
-                <input type="text" class="form-control" formControlName="apellido">
+                <input type="text" class="form-control" formControlName="apellido" [class.is-invalid]="apellidoInvalido">
+                <small *ngIf="apellidoInvalido" class="text-danger">Campo requerido</small>
             </div>
             <div class="col-md-6">
                 <label for="correo" class="form-label">e-mail</label>
-                <input type="text" class="form-control" formControlName="correo">
+                <input type="text" class="form-control" formControlName="correo" [class.is-invalid]="correoInvalido">
+                <small *ngIf="correoInvalido" class="text-danger">Campo requerido o formato invalido<br></small>
             </div>
             <div class="col-md-6">
                 <label for="correo2" class="form-label">Confirmación e-mail</label>
-                <input type="text" class="form-control" formControlName="correo2">
+                <input type="text" class="form-control" formControlName="correo2" [class.is-invalid]="correo2Invalido || correo2Diferente">
+                <small *ngIf="correo2Invalido" class="text-danger">-Campo requerido o formato invalido<br></small>
+                <small *ngIf="correo2Diferente" class="text-danger">-Los correos ingresados son diferentes</small>
             </div>
             <div class="col-md-6">
                 <label for="passwd" class="form-label">Contraseña</label>
-                <input type="password" class="form-control" formControlName="passwd">
+                <input type="password" class="form-control" formControlName="passwd" [class.is-invalid]="passwdInvalido">
+                <small *ngIf="passwdInvalido" class="text-danger">Campo requerido<br></small>
             </div>
             <div class="col-md-6">
                 <label for="passwd2" class="form-label">Confirmación Contraseña</label>
-                <input type="password" class="form-control" formControlName="passwd2">
+                <input type="password" class="form-control" formControlName="passwd2" [class.is-invalid]="passwd2Invalido">
+                <small *ngIf="passwd2Invalido" class="text-danger">Campo requerido<br></small>
             </div>
 
             <div class="col-md-6">
                 <label for="pais" class="form-label">Pais</label>
-                <select formControlName="pais" class="form-select">
-                    <option selected></option>
+                <select formControlName="pais" class="form-select" [class.is-invalid]="paisInvalido">
                     <option *ngFor="let countrie of countries" value="{{countrie.code}}">{{countrie.name_es}}</option>
-                    
+
                 </select>
+                <small *ngIf="paisInvalido" class="text-danger">Campo requerido<br></small>
             </div>
 
             <div class="d-grid my-5">
                 <button type="submit" class="btn btn-primary">Sign in</button>
             </div>
         </form>
+
+    <hr>
+    <pre>
+            Estado Form: {{forma.valid}}
+            <br>
+            Status: {{forma.status}}
+            <br>
+            {{forma.value | json}}
+    </pre>
+
+
     </div>
 </div>

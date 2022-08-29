@@ -1,10 +1,14 @@
 export class Usuario {
 
-    name: string;
-    passwd: string;
+    nombre: string;
+    apellido: string;
+    correo: string;
+    contrasena: string;
+    pais: string;
     exist: boolean;
 
-    constructor(){}
-    
+
+    constructor() { }
+
 
 }
